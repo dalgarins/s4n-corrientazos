@@ -10,4 +10,9 @@ public class EastState implements ICardinalState {
     public void turnRight90Degrees(IGyroscopeContext gyroscope) {
         gyroscope.setCardinalState(new SouthState());
     }
+
+    @Override
+    public Cardinal currentCardinal() {
+        return Cardinal.EAST;
+    }
 }

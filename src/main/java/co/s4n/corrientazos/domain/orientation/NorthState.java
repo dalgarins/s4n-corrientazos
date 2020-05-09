@@ -11,4 +11,9 @@ public class NorthState implements ICardinalState {
     public void turnRight90Degrees(IGyroscopeContext gyroscope) {
         gyroscope.setCardinalState(new EastState());
     }
+
+    @Override
+    public Cardinal currentCardinal() {
+        return Cardinal.NORTH;
+    }
 }

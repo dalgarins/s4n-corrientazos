@@ -6,4 +6,6 @@ public interface ICardinalState {
 
     void turnRight90Degrees(IGyroscopeContext gyroscope);
 
+    Cardinal currentCardinal();
+
 }
