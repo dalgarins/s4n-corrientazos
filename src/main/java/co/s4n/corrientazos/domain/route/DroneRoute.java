@@ -3,7 +3,7 @@ package co.s4n.corrientazos.domain.route;
 import java.util.Collections;
 import java.util.List;
 
-public class DroneRoute {
+public class DroneRoute implements IDroneRoute {
 
     private List<DeliveryRoute> routes;
 
@@ -15,6 +15,7 @@ public class DroneRoute {
         this.routes.add(route);
     }
 
+    @Override
     public List<DeliveryRoute> getRoutes() {
         return Collections.unmodifiableList(routes);
     }
