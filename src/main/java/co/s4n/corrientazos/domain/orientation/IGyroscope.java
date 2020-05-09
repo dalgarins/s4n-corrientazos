@@ -6,4 +6,6 @@ public interface IGyroscope {
 
     void turnRight();
 
+    Cardinal targetCardinalPoint();
+
 }

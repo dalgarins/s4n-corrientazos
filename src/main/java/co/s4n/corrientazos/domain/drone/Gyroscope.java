@@ -1,5 +1,6 @@
 package co.s4n.corrientazos.domain.drone;
 
+import co.s4n.corrientazos.domain.orientation.Cardinal;
 import co.s4n.corrientazos.domain.orientation.ICardinalState;
 import co.s4n.corrientazos.domain.orientation.IGyroscope;
 import co.s4n.corrientazos.domain.orientation.IGyroscopeContext;
@@ -22,5 +23,10 @@ public class Gyroscope implements IGyroscope, IGyroscopeContext {
     @Override
     public void turnRight() {
         state.turnRight90Degrees(this);
+    }
+
+    @Override
+    public Cardinal targetCardinalPoint() {
+        return state.currentCardinal();
     }
 }
