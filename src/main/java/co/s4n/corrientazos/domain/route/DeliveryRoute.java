@@ -1,5 +1,7 @@
 package co.s4n.corrientazos.domain.route;
 
+import co.s4n.corrientazos.domain.drone.IDrone;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +40,27 @@ public class DeliveryRoute {
     }
 
     enum Step {
-        AHEAD("A"), LEFT("I"), RIGHT("D"), NONE("NONE");
+        AHEAD("A") {
+            @Override
+            void executeStep(IDrone drone) {
+                drone.continueAHead();
+            }
+        }, LEFT("I") {
+            @Override
+            void executeStep(IDrone drone) {
+                drone.turnLeft();
+            }
+        }, RIGHT("D") {
+            @Override
+            void executeStep(IDrone drone) {
+                drone.turnRight();
+            }
+        }, NONE("NONE") {
+            @Override
+            void executeStep(IDrone drone) {
+
+            }
+        };
 
         private static final Map<String, Step> BY_LABEL = new HashMap<>();
 
@@ -52,6 +74,8 @@ public class DeliveryRoute {
         private Step(String value) {
             this.value = value;
         }
+
+        abstract void executeStep(IDrone drone);
 
         public static Step valueOfLabel(String label) {
             return BY_LABEL.getOrDefault(label, NONE);
