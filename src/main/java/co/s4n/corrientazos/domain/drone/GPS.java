@@ -20,7 +20,7 @@ public class GPS implements IGeoPosition, IMovePosition {
 
     @Override
     public Location getCurrentLocation() {
-        return null;
+        return new Location(location.getCoordinateX(), location.getCoordinateY());
     }
 
     @Override
