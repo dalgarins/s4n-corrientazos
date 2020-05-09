@@ -12,14 +12,14 @@ public class DeliveryRouteTest {
     @Test
     public void givenAValidStringReturnValidListSteps() {
 
-        List<DeliveryRoute.Step> steps = new ArrayList<>();
-        steps.add(DeliveryRoute.Step.AHEAD);
-        steps.add(DeliveryRoute.Step.AHEAD);
-        steps.add(DeliveryRoute.Step.AHEAD);
-        steps.add(DeliveryRoute.Step.AHEAD);
-        steps.add(DeliveryRoute.Step.AHEAD);
-        steps.add(DeliveryRoute.Step.LEFT);
-        steps.add(DeliveryRoute.Step.RIGHT);
+        List<RouteStep> steps = new ArrayList<>();
+        steps.add(RouteStep.AHEAD);
+        steps.add(RouteStep.AHEAD);
+        steps.add(RouteStep.AHEAD);
+        steps.add(RouteStep.AHEAD);
+        steps.add(RouteStep.AHEAD);
+        steps.add(RouteStep.LEFT);
+        steps.add(RouteStep.RIGHT);
 
         DeliveryRoute deliveryRoute = DeliveryRoute.of("AAAAAID");
         assertNotNull(deliveryRoute);
@@ -30,6 +30,6 @@ public class DeliveryRouteTest {
     public void givenAnInvalidStringReturnInvalidStepList() {
 
         DeliveryRoute deliveryRoute = DeliveryRoute.of("XYZ");
-        assertFalse(deliveryRoute.isInValid());
+        assertTrue(deliveryRoute.isInValid());
     }
 }
