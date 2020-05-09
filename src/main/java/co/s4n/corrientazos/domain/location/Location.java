@@ -10,6 +10,14 @@ public class Location {
         this.coordinateY = coordinateY;
     }
 
+    public int getCoordinateX() {
+        return coordinateX;
+    }
+
+    public int getCoordinateY() {
+        return coordinateY;
+    }
+
     public void increaseX() {
         coordinateX++;
     }

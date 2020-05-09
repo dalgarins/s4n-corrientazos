@@ -1,12 +1,21 @@
 package co.s4n.corrientazos.domain.report;
 
-import co.s4n.corrientazos.domain.drone.Drone;
+import co.s4n.corrientazos.domain.location.Location;
+import co.s4n.corrientazos.domain.orientation.Cardinal;
 
-public class DroneReport {
+public class DroneReport implements IDroneReport {
 
-    private Drone drone;
+    private Location location;
+    private Cardinal cardinal;
 
-    public DroneReport(Drone drone) {
-        this.drone = drone;
+    public DroneReport(Location location, Cardinal cardinal) {
+        this.location = location;
+        this.cardinal = cardinal;
+    }
+
+    @Override
+    public String getFormattedReport() {
+        return String.format("(%d, %d) %s %s",
+                location.getCoordinateX(), location.getCoordinateY(), "dirección", cardinal.getValue());
     }
 }

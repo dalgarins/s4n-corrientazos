@@ -3,6 +3,7 @@ package co.s4n.corrientazos.domain.drone;
 import co.s4n.corrientazos.domain.gps.IGeoPosition;
 import co.s4n.corrientazos.domain.orientation.IGyroscope;
 import co.s4n.corrientazos.domain.processors.IRouteProcessor;
+import co.s4n.corrientazos.domain.report.DroneReport;
 import co.s4n.corrientazos.domain.report.IDroneReport;
 import co.s4n.corrientazos.domain.route.IDroneRoute;
 
@@ -43,6 +44,7 @@ public class Drone implements IDrone {
 
     @Override
     public IDroneReport getReport() {
-        return null;
+        return new DroneReport(geoPosition.getCurrentLocation(),
+                gyroscope.targetCardinalPoint());
     }
 }
