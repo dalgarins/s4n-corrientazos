@@ -1,6 +1,7 @@
 package co.s4n.corrientazos.data.repository;
 
 import co.s4n.corrientazos.domain.report.DroneReport;
+import co.s4n.corrientazos.domain.report.IDroneReport;
 import co.s4n.corrientazos.domain.repository.IInputRepository;
 import co.s4n.corrientazos.domain.repository.IOutputRepository;
 import co.s4n.corrientazos.domain.route.DeliveryRoute;
@@ -42,7 +43,7 @@ public class RoutesRepository implements IInputRepository, IOutputRepository {
     }
 
     @Override
-    public void saveDroneReports(List<DroneReport> reports) {
+    public void saveDroneReports(List<IDroneReport> reports) {
 
     }
 }
