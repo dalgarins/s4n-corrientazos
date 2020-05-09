@@ -1,7 +1,7 @@
 package co.s4n.corrientazos.domain.usecase.drone;
 
 import co.s4n.corrientazos.domain.drone.Drone;
-import co.s4n.corrientazos.domain.report.DroneReport;
+import co.s4n.corrientazos.domain.report.IDroneReport;
 import co.s4n.corrientazos.domain.route.DroneRoute;
 import co.s4n.corrientazos.domain.route.IDroneRoute;
 import co.s4n.corrientazos.domain.usecase.UseCase;
@@ -37,13 +37,13 @@ public class DroneProcessRouteUseCase extends UseCase<DroneProcessRouteUseCase.R
 
     public static class Response implements UseCase.OutputValues {
 
-        private final List<DroneReport> routes;
+        private final List<IDroneReport> routes;
 
-        public Response(List<DroneReport> routes) {
+        public Response(List<IDroneReport> routes) {
             this.routes = routes;
         }
 
-        public List<DroneReport> getReport() {
+        public List<IDroneReport> getReport() {
             return Collections.unmodifiableList(routes);
         }
     }
