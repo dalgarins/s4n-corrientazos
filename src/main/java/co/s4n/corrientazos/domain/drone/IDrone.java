@@ -1,5 +1,7 @@
 package co.s4n.corrientazos.domain.drone;
 
+import co.s4n.corrientazos.domain.report.IDroneReport;
+
 public interface IDrone {
 
     void turnLeft();
@@ -8,4 +10,5 @@ public interface IDrone {
 
     void continueAHead();
 
+    IDroneReport getReport();
 }
