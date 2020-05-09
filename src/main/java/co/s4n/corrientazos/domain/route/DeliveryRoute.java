@@ -14,6 +14,11 @@ public class DeliveryRoute {
         this.steps = steps;
     }
 
+    public boolean isInValid() {
+        return this.steps.stream()
+                .anyMatch(step -> step == Step.NONE);
+    }
+
     public List<Step> getDeliverySteps() {
         return Collections.unmodifiableList(steps);
     }

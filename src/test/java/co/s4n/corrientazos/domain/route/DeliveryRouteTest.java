@@ -30,8 +30,6 @@ public class DeliveryRouteTest {
     public void givenAnInvalidStringReturnInvalidStepList() {
 
         DeliveryRoute deliveryRoute = DeliveryRoute.of("XYZ");
-        deliveryRoute.getDeliverySteps().forEach(step -> {
-            assertEquals(step, DeliveryRoute.Step.NONE);
-        });
+        assertFalse(deliveryRoute.isInValid());
     }
 }
