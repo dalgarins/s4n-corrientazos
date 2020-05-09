@@ -6,4 +6,6 @@ public interface IDroneRoute {
 
     List<DeliveryRoute> getRoutes();
 
+    boolean hasAnInvalidRoute();
+
 }

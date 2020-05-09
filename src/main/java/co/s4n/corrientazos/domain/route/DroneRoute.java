@@ -19,4 +19,10 @@ public class DroneRoute implements IDroneRoute {
     public List<DeliveryRoute> getRoutes() {
         return Collections.unmodifiableList(routes);
     }
+
+    @Override
+    public boolean hasAnInvalidRoute() {
+        return this.getRoutes().stream()
+                .anyMatch(DeliveryRoute::isInValid);
+    }
 }
