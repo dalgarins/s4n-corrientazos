@@ -3,6 +3,8 @@ plugins {
     id 'java'
 }
 
+mainClassName = "co.s4n.corrientazos.CorrientazosApplication"
+
 group 'co.s4n.corrientazos'
 version '1.0-SNAPSHOT'
 
