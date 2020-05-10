@@ -1,0 +1,4 @@
+== Reporte de entregas ==
+#foreach( $report in $reportList )
+    $report.getFormattedReport()
+#end
