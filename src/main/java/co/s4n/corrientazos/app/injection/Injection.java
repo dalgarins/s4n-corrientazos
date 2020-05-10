@@ -1,7 +1,10 @@
 package co.s4n.corrientazos.app.injection;
 
+import co.s4n.corrientazos.app.controller.CorrientazosController;
+import co.s4n.corrientazos.app.controller.IDeliveryController;
 import co.s4n.corrientazos.app.executor.UseCaseExecutorImpl;
 import co.s4n.corrientazos.app.factory.DroneFactory;
+import co.s4n.corrientazos.data.report.WriteDroneReport;
 import co.s4n.corrientazos.data.repository.RoutesRepository;
 import co.s4n.corrientazos.domain.drone.GPS;
 import co.s4n.corrientazos.domain.drone.Gyroscope;
@@ -10,6 +13,7 @@ import co.s4n.corrientazos.domain.location.Location;
 import co.s4n.corrientazos.domain.orientation.IGyroscope;
 import co.s4n.corrientazos.domain.processors.DroneLinearProcessor;
 import co.s4n.corrientazos.domain.processors.IRouteProcessor;
+import co.s4n.corrientazos.domain.report.IWriteReport;
 import co.s4n.corrientazos.domain.repository.IInputRepository;
 import co.s4n.corrientazos.domain.repository.IOutputRepository;
 import co.s4n.corrientazos.domain.usecase.UseCaseExecutor;
@@ -59,8 +63,12 @@ public class Injection {
         return SINGLETON_HELPER.USE_CASE_EXECUTOR;
     }
 
-    public static RoutesRepository provideInputRepository(String inputPath, String outputPath) {
-        return new RoutesRepository(inputPath, outputPath);
+    public static IWriteReport provideWriteReport(String outputPath) {
+        return new WriteDroneReport(outputPath);
+    }
+
+    public static RoutesRepository provideRoutesRepository(String inputPath, IWriteReport writeReport) {
+        return new RoutesRepository(inputPath, writeReport);
     }
 
     public static GetAllRoutesUseCase provideGetAllRoutesUseCase(IInputRepository inputRepository) {
@@ -73,6 +81,15 @@ public class Injection {
 
     public static WriteReportByDroneUseCase provideWriteReportByDroneUseCase(IOutputRepository outputRepository) {
         return new WriteReportByDroneUseCase(outputRepository);
+    }
+
+    public static IDeliveryController provideDeliveryController(UseCaseExecutor useCaseExecutor,
+                                                                GetAllRoutesUseCase getAllRoutesUseCase,
+                                                                DroneProcessRouteUseCase droneProcessRouteUseCase,
+                                                                WriteReportByDroneUseCase writeReportByDroneUseCase,
+                                                                DroneFactory droneFactory) {
+        return new CorrientazosController(useCaseExecutor, getAllRoutesUseCase, droneProcessRouteUseCase,
+                writeReportByDroneUseCase, droneFactory);
     }
 
 }

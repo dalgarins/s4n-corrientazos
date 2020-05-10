@@ -11,8 +11,12 @@ public class DroneRoute implements IDroneRoute {
         this.routes = routes;
     }
 
-    public void addRoute(DeliveryRoute route) {
-        this.routes.add(route);
+    @Override
+    public String getRouteName() {
+        return this.routes.stream()
+                .findFirst()
+                .map(DeliveryRoute::getDeliveryName)
+                .orElseGet(() -> "");
     }
 
     @Override

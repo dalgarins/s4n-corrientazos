@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface IDroneRoute {
 
+    String getRouteName();
+
     List<DeliveryRoute> getRoutes();
 
     boolean hasAnInvalidRoute();

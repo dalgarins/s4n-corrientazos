@@ -16,7 +16,7 @@ public class DroneLinearProcessor implements IRouteProcessor {
     @Override
     public List<IDroneReport> process(IDrone drone, IDroneRoute routes) {
         if (routes.hasAnInvalidRoute()) {
-            return Collections.singletonList(new InvalidReport());
+            return Collections.singletonList(new InvalidReport(routes.getRouteName()));
         }
         return routes.getRoutes()
                 .stream()
@@ -31,6 +31,6 @@ public class DroneLinearProcessor implements IRouteProcessor {
     private IDroneReport processDelivery(IDrone drone, DeliveryRoute deliveryRoute) {
         deliveryRoute.getDeliverySteps()
                 .forEach((RouteStep step) -> step.executeStep(drone));
-        return drone.getReport();
+        return drone.getReport(deliveryRoute);
     }
 }

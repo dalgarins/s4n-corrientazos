@@ -6,10 +6,16 @@ import java.util.stream.Collectors;
 
 public class DeliveryRoute {
 
+    private String deliveryName;
     private List<RouteStep> steps;
 
-    private DeliveryRoute(List<RouteStep> steps) {
+    private DeliveryRoute(String deliveryName, List<RouteStep> steps) {
+        this.deliveryName = deliveryName;
         this.steps = steps;
+    }
+
+    public String getDeliveryName() {
+        return deliveryName;
     }
 
     public boolean isInValid() {
@@ -21,10 +27,10 @@ public class DeliveryRoute {
         return Collections.unmodifiableList(steps);
     }
 
-    public static DeliveryRoute of(String steps) {
+    public static DeliveryRoute of(String fileName, String steps) {
 
         List<RouteStep> droneSteps = getSteps(steps);
-        return new DeliveryRoute(droneSteps);
+        return new DeliveryRoute(fileName, droneSteps);
     }
 
     private static List<RouteStep> getSteps(String steps) {
