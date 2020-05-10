@@ -21,7 +21,7 @@ public class DeliveryRouteTest {
         steps.add(RouteStep.LEFT);
         steps.add(RouteStep.RIGHT);
 
-        DeliveryRoute deliveryRoute = DeliveryRoute.of("AAAAAID");
+        DeliveryRoute deliveryRoute = DeliveryRoute.of("in01.txt", "AAAAAID");
         assertNotNull(deliveryRoute);
         assertEquals(deliveryRoute.getDeliverySteps(), steps);
     }
@@ -29,7 +29,7 @@ public class DeliveryRouteTest {
     @Test
     public void givenAnInvalidStringReturnInvalidStepList() {
 
-        DeliveryRoute deliveryRoute = DeliveryRoute.of("XYZ");
+        DeliveryRoute deliveryRoute = DeliveryRoute.of("intest.txt","XYZ");
         assertTrue(deliveryRoute.isInValid());
     }
 }

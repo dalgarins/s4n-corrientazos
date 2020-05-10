@@ -14,7 +14,7 @@ public class WriteDroneReportTest {
     @Test
     public void writeReport() {
 
-        DroneReport droneReport = new DroneReport(new Location(0, 0), Cardinal.NORTH);
+        DroneReport droneReport = new DroneReport("in01.txt", new Location(0, 0), Cardinal.NORTH);
 
         WriteDroneReport writeDroneReport = new WriteDroneReport("output_test/");
         writeDroneReport.writeReport("out01.txt", Arrays.asList(droneReport));
